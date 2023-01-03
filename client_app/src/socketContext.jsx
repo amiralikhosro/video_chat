@@ -1,10 +1,6 @@
 import React, { createContext, useState, useRef, useEffect } from "react";
 import { io } from "socket.io-client";
 import Peer from "simple-peer";
-// import global from "global";
-// import * as process from "process";
-
-// global.process = process;
 
 const SocketContext = createContext();
 
