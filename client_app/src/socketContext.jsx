@@ -34,8 +34,8 @@ const ContextProvider = ({ children }) => {
       setMe(id);
     });
 
-    socket.on("callUser", (from, callerName, signal) => {
-      setCall({ isREceivedCAll: true, from, callerName, signal });
+    socket.on("callUser", ({ from, name, signal }) => {
+      setCall({ isReceivedCall: true, from, name, signal });
     });
   }, []);
 
@@ -59,7 +59,6 @@ const ContextProvider = ({ children }) => {
 
   const callUser = (id) => {
     const peer = new Peer({ initiator: true, trickle: false, stream });
-    console.log(peer);
 
     peer.on("signal", (data) => {
       socket.emit("callUser", {
